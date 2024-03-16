@@ -885,7 +885,7 @@ require('lazy').setup({
   },
 })
 
-dofile '/Users/tmill32/.config/nvim/lua/custom/init.lua'
+-- dofile(vim.env.PATH .. './lua/custom/init.lua')
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
