@@ -5,12 +5,6 @@ opt.smartindent = true
 -- wrap = bad
 opt.wrap = false
 
--- file undo for longer lived undos
--- opt.swapfile = false
--- opt.backup = false
--- opt.undodir = os.getenv 'HOME' .. '/.undodir'
--- opt.undofile = true
-
 -- better "/" searching
 opt.hlsearch = false
 opt.incsearch = true
@@ -32,5 +26,7 @@ opt.shiftwidth = 4
 opt.expandtab = true
 
 vim.keymap.set('i', '<M-BS>', '<C-w>', { desc = 'Option backspace while typing' })
+vim.keymap.set('n', '<C-d>', '<C-d>zz', { desc = 'Keep centered when jumping down' })
+vim.keymap.set('n', '<C-u>', '<C-u>zz', { desc = 'Keep centered when jumping up' })
 
 vim.cmd 'NvimTreeToggle'

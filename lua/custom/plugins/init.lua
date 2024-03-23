@@ -25,10 +25,13 @@ return {
       end
       require('lualine').setup {
         options = {
-          theme = 'horizon',
+          theme = 'tokyonight',
         },
         sections = {
           lualine_x = { clients_lsp, 'filetype' },
+        },
+        extensions = {
+          'nvim-tree',
         },
       }
     end,
@@ -100,31 +103,6 @@ return {
     end,
   },
 
-  -- Smoother scrolling w/ <C-d> and <C-u>
-  {
-    'karb94/neoscroll.nvim',
-    lazy = false,
-    config = function()
-      require('neoscroll').setup {
-        pre_hook = function()
-          vim.opt.scrolloff = 999
-        end,
-        post_hook = function()
-          vim.opt.scrolloff = 0
-        end,
-      }
-      local t = {}
-      -- Syntax: t[keys] = {function, {function arguments}}
-      t['<C-u>'] = { 'scroll', { '-vim.wo.scroll', 'true', '100' } }
-      t['<C-d>'] = { 'scroll', { 'vim.wo.scroll', 'true', '100' } }
-      t['zt'] = { 'zt', { '250' } }
-      t['zz'] = { 'zz', { '250' } }
-      t['zb'] = { 'zb', { '250' } }
-
-      require('neoscroll.config').set_mappings(t)
-    end,
-  },
-
   -- cmdline in popup window
   {
     'VonHeikemen/fine-cmdline.nvim',
@@ -177,6 +155,9 @@ return {
     ft = { 'markdown' },
     build = function()
       vim.fn['mkdp#util#install']()
+    end,
+    config = function()
+      vim.keymap.set('n', '<leader>mm', '<cmd>MarkdownPreviewToggle<CR>', { desc = 'Preview [M]arkdown file' })
     end,
   },
 }
