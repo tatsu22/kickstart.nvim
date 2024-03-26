@@ -556,6 +556,13 @@ require('lazy').setup({
             },
           },
         },
+
+        -- gdscript
+        -- gdtoolkit = {
+        --   filetypes = { "gd", "gdscript", "gdscript2" },
+        --   root_dir = util.root_pattern("project.godot", ".git")
+        -- },
+
         -- pyright = {},
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
@@ -595,6 +602,7 @@ require('lazy').setup({
       --
       --  You can press `g?` for help in this menu
       require('mason').setup()
+      require('lspconfig').gdscript.setup {}
 
       -- You can add other tools here that you want Mason to install
       -- for you, so that they are available from within Neovim.
@@ -801,6 +809,9 @@ require('lazy').setup({
       -- - sd'   - [S]urround [D]elete [']quotes
       -- - sr)'  - [S]urround [R]eplace [)] [']
       require('mini.surround').setup()
+
+      -- Mini pairs for all things that need pairing
+      require('mini.pairs').setup()
 
       -- Simple and easy statusline.
       --  You could remove this setup call if you don't like it,

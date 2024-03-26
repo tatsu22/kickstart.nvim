@@ -160,4 +160,34 @@ return {
       vim.keymap.set('n', '<leader>mm', '<cmd>MarkdownPreviewToggle<CR>', { desc = 'Preview [M]arkdown file' })
     end,
   },
+
+  -- Status Bar
+  {
+    'romgrk/barbar.nvim',
+    event = 'VimEnter',
+    dependencies = {
+      'lewis6991/gitsigns.nvim', -- OPTIONAL: for git status
+      'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
+    },
+    init = function()
+      vim.g.barbar_auto_setup = false
+      vim.keymap.set('n', '<leader>x', '<cmd>BufferClose<CR>', { desc = 'Close[x] the current buffer' })
+      vim.keymap.set('n', '<leader>X', '<cmd>BufferCloseAllButCurrent<CR>', { desc = 'Close[X] other buffers' })
+      vim.keymap.set('n', '<Tab>', '<cmd>BufferNext<CR>', { desc = 'Next buffer' })
+      vim.keymap.set('n', '<S-Tab>', '<cmd>BufferPrevious<CR>', { desc = 'Prev buffer' })
+    end,
+    opts = {
+      -- lazy.nvim will automatically call setup for you. put your options here, anything missing will use the default:
+      -- animation = true,
+      -- insert_at_start = true,
+      -- …etc.
+    },
+    -- config = function()
+    --   vim.keymap.set('n', '<leader>x', '<cmd>BufferClose<CR>', { desc = 'Close[x] the current buffer' })
+    --   vim.keymap.set('n', '<leader>x', '<cmd>BufferCloseAllButCurrent<CR>', { desc = 'Close[X] other buffers' })
+    --   vim.keymap.set('n', '<Tab>', '<cmd>BufferNext<CR>', { desc = 'Next buffer' })
+    --   vim.keymap.set('n', '<S-Tab>', '<cmd>BufferPrevious<CR>', { desc = 'Prev buffer' })
+    -- end,
+    version = '^1.0.0', -- optional: only update when a new 1.x version is released
+  },
 }
